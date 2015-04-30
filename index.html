@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Tsuchijs by sergiodxa</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Tsuchijs</h1>
+        <p class="header">Promised based wrapper for the browser Notification API made in ECMAScript 6</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/sergiodxa/TsuchiJS/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/sergiodxa/TsuchiJS/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/sergiodxa/TsuchiJS">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/sergiodxa">sergiodxa</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="tsuchijs" class="anchor" href="#tsuchijs" aria-hidden="true"><span class="octicon octicon-link"></span></a>TsuchiJS</h1>
+
+<p>Promised based wrapper for the browser's Notification API made in ECMAScript 6.</p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use:</h2>
+
+<p>Load the library:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">import</span> tsuchi <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>tsuchijs<span class="pl-pds">'</span></span>;</pre></div>
+
+<p>Then you can verify the compatibility, ask permission and send a notification:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// check support</span>
+tsuchi.checkSupport()
+  .then(() <span class="pl-k">=&gt;</span> {
+    <span class="pl-c">// then verify and ask for permissions</span>
+    tsuchi.verifyPermission()
+      .then(() <span class="pl-k">=&gt;</span> {
+        <span class="pl-c">// then send the notification</span>
+        tsuchi.sendNotification(<span class="pl-s"><span class="pl-pds">'</span>hola mundo<span class="pl-pds">'</span></span>, {
+          body<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>hola mundo ¿todo bien?<span class="pl-pds">'</span></span>,
+        }).then(notification <span class="pl-k">=&gt;</span> {
+          <span class="pl-c">// then you can listen the for events (show, click, close, error) of the notifications</span>
+          notification.on(<span class="pl-s"><span class="pl-pds">'</span>show<span class="pl-pds">'</span></span>).then((e) <span class="pl-k">=&gt;</span> {
+            <span class="pl-c">// do something when the notification is showed</span>
+          });
+        }).catch(error <span class="pl-k">=&gt;</span> <span class="pl-en">console</span><span class="pl-c1">.log</span>(error) );
+      })
+      .catch(error <span class="pl-k">=&gt;</span> <span class="pl-en">console</span><span class="pl-c1">.log</span>(error) );
+  })
+  .catch(error <span class="pl-k">=&gt;</span> {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(error);
+  })</pre></div>
+
+<h2>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+
+<p>All methods return a promise.</p>
+
+<h3>
+<a id="tsuchichecksupport" class="anchor" href="#tsuchichecksupport" aria-hidden="true"><span class="octicon octicon-link"></span></a>tsuchi.checkSupport()</h3>
+
+<p>This methods check if the browser support notifications.</p>
+
+<h3>
+<a id="tsuchiverifypermission" class="anchor" href="#tsuchiverifypermission" aria-hidden="true"><span class="octicon octicon-link"></span></a>tsuchi.verifyPermission()</h3>
+
+<p>This method verify if you has permissions to use notifications, if you never asked for permission ask the user.</p>
+
+<h3>
+<a id="tsuchisendnotification" class="anchor" href="#tsuchisendnotification" aria-hidden="true"><span class="octicon octicon-link"></span></a>tsuchi.sendNotification()</h3>
+
+<p>This method receive a string with the title of the notification and an object who can has the following attributes:</p>
+
+<div class="highlight highlight-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>body<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>A string representing an extra content to display within the notification<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>dir<span class="pl-pds">"</span></span> : <span class="pl-s"><span class="pl-pds">"</span>The direction of the notification; it can be auto, ltr, or rtl<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>icon<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The URL of an image to be used as an icon by the notification<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>lang<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Specify the lang used within the notification. This string must be a valid BCP 47 language tag.<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>tag<span class="pl-pds">"</span></span> : <span class="pl-s"><span class="pl-pds">"</span>An ID for a given notification that allows to retrieve, replace or remove it if necessary<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<p>If there wasn't any problem with the notification you can execute the then callback who receive the notification object with the methods on and off who are a promised addEventListener and removeEventListener.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2015 Sergio Daniel Xalambrí</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-48432002-9");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
