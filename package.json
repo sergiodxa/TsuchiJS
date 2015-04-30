@@ -1,0 +1,22 @@
+{
+  "name": "TsuchiJS",
+  "version": "1.0.0",
+  "description": "Promised based wrapper for the browser's Notification API made in ECMAScript 6",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "serve test"
+  },
+  "keywords": [
+    "notification",
+    "promised"
+  ],
+  "author": "Sergio Daniel Xalambrí <sergio@xalambri.com.ar> (http://sergio.xalambri.com.ar/)",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-watch": "^4.2.4"
+  }
+}
