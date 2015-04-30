@@ -6,12 +6,20 @@
   "scripts": {
     "test": "serve test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiodxa/TsuchiJS.git"
+  },
   "keywords": [
     "notification",
     "promised"
   ],
   "author": "Sergio Daniel Xalambrí <sergio@xalambri.com.ar> (http://sergio.xalambri.com.ar/)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sergiodxa/TsuchiJS/issues"
+  },
+  "homepage": "http://sergiodxa.github.io/TsuchiJS",
   "devDependencies": {
     "babelify": "^6.0.2",
     "gulp": "^3.8.11",
