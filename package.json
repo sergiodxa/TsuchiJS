@@ -1,5 +1,5 @@
 {
-  "name": "TsuchiJS",
+  "name": "tsuchijs",
   "version": "1.0.0",
   "description": "Promised based wrapper for the browser's Notification API made in ECMAScript 6",
   "main": "build/index.js",
