@@ -6,7 +6,7 @@
     <title>Tsuchijs by sergiodxa</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
@@ -46,16 +46,16 @@
 
 <div class="highlight highlight-javascript"><pre><span class="pl-c">// check support</span>
 tsuchi.checkSupport()
-  .then(() <span class="pl-k">=&gt;</span> {
+  .then(()<span class="pl-k"> =&gt;</span> {
     <span class="pl-c">// then verify and ask for permissions</span>
     tsuchi.verifyPermission()
-      .then(() <span class="pl-k">=&gt;</span> {
+      .then(()<span class="pl-k"> =&gt;</span> {
         <span class="pl-c">// then send the notification</span>
         tsuchi.sendNotification(<span class="pl-s"><span class="pl-pds">'</span>hola mundo<span class="pl-pds">'</span></span>, {
           body<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>hola mundo ¿todo bien?<span class="pl-pds">'</span></span>,
         }).then(notification <span class="pl-k">=&gt;</span> {
           <span class="pl-c">// then you can listen the for events (show, click, close, error) of the notifications</span>
-          notification.on(<span class="pl-s"><span class="pl-pds">'</span>show<span class="pl-pds">'</span></span>).then((e) <span class="pl-k">=&gt;</span> {
+          notification.on(<span class="pl-s"><span class="pl-pds">'</span>show<span class="pl-pds">'</span></span>).then((<span class="pl-smi">e</span>)<span class="pl-k"> =&gt;</span> {
             <span class="pl-c">// do something when the notification is showed</span>
           });
         }).catch(error <span class="pl-k">=&gt;</span> <span class="pl-en">console</span><span class="pl-c1">.log</span>(error) );
@@ -120,7 +120,7 @@ tsuchi.checkSupport()
           </script>
           <script type="text/javascript">
             try {
-              var pageTracker = _gat._getTracker("UA-48432002-9");
+              var pageTracker = _gat._getTracker("UA-48432002-3");
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
