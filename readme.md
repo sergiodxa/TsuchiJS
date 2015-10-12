@@ -13,21 +13,16 @@ Then you can verify the compatibility, ask permission and send a notification:
 ```javascript
 // check support
 tsuchi.checkSupport()
-  .then(() => {
-    // then verify and ask for permissions
-    tsuchi.verifyPermission()
-      .then(() => {
-        // then send the notification
-        tsuchi.sendNotification('hola mundo', {
-          body: 'hola mundo ¿todo bien?',
-        }).then(notification => {
-          // then you can listen the for events (show, click, close, error) of the notifications
-          notification.on('show').then((e) => {
-            // do something when the notification is showed
-          });
-        }).catch(error => console.log(error) );
-      })
-      .catch(error => console.log(error) );
+  // then verify and ask for permissions
+  .then(() => tsuchi.verifyPermission())
+  // then send the notification
+  .then(() => tsuchi.sendNotification('hola mundo', {
+    body: 'hola mundo ¿todo bien?',
+  })
+  // do something when the notification is showed
+  .then(notification => notification.on('show'))
+  .then(event => {
+    // do something when the notification is showed
   })
   .catch(error => {
     console.log(error);
